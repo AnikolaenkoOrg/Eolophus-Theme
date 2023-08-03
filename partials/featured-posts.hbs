@@ -1,0 +1,56 @@
+{{#get "posts" filter="featured:true" include="tags,authors"}}
+{{#match posts.length ">" 0}}
+
+<section class="container mx-auto splide nw-space-t" id="nw-featured-posts">
+      <div class="absolute flex justify-between top-5 right-8 md:left-[5%] md:right-[5%] z-20 md:top-[50%] md:mt-[-20px]">
+            <button id="fp-prev">
+                {{> "icons/arrow-prev"}}
+            </button>
+            <button id="fp-next">
+                {{> "icons/arrow-next"}}
+            </button>
+        </div>
+        <div class="splide__track">
+            <div class="splide__list">
+                {{#foreach posts}}
+                    <div class="splide__slide relative h-[500px] md:h-[600px] lg:h-[800px] bg-gray-900 flex justify-center items-center">
+                        {{#if feature_image}}
+                            <a href="{{url}}" class="block absolute w-full h-full">
+                                <img class="nw-img lazyload" src="{{img_url feature_image size="xxs"}}" data-src="{{img_url feature_image size="xl"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}">
+                            </a>
+                        {{/if}}
+                        <div class="relative z-10">
+                            <div class="flex items-center mb-3 space-x-2 self-start px-10 md:px-0">
+                                {{#if tags}}
+                                    <div class="flex space-x-2">
+                                        {{#foreach tags}}
+                                            <a href="{{url}}" title="{{name}}" class="nw-tag-dark text-xs !border-white">
+                                                <span>{{name}}</span>
+                                            </a>
+                                        {{/foreach}}
+                                    </div>
+                                {{/if}}
+                                <div class="text-white uppercase text-sm">
+                                    {{#primary_author}}
+                                        <span>{{t "by"}} <a href="{{url}}" title="{{name}}">{{name}}</a></span>
+                                    {{/primary_author}}
+                                    <span>/</span>
+                                    <span><time datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time></span>
+                                </div>
+                            </div>
+                            {{#if title}}
+                                <h2 class="text-4xl md:text-5xl md:leading-[58px] lg:text-[60px] lg:leading-[70px] font-bold uppercase text-white md:w-[700px] px-10 md:px-0">
+                                    <a href="{{url}}" class="underline">
+                                        {{title}}
+                                    </a>
+                                </h2>
+                            {{/if}}
+                        </div>
+                    </div>
+                {{/foreach}}
+            </div>
+        </div>
+</section>
+
+{{/match}}
+{{/get}}

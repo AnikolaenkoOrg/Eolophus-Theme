@@ -1,0 +1,41 @@
+{{!< default}}
+
+<div class="container mx-auto nw-space-t">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-24 items-center">
+        <div class="mb-12 lg:mt-0">
+            {{#if page.title}}
+                <h1 class="text-3xl font-bold uppercase mb-[80px]">{{page.title}}</h1>
+            {{/if}}
+            <form action="{{#if @custom.endpoint_form}}{{@custom.endpoint_form}}{{/if}}" method="POST" id="formspree">
+                <div class="mb-12">
+                    <input type="text" name="name" id="name" class="nw-border-b !border-b-[.7px] dark:!border-b-[1px] w-full bg-transparent placeholder:text-base placeholder:uppercase placeholder:text-black dark:placeholder:text-white" placeholder="{{t 'Full name'}}">
+                </div>
+                <div class="mb-12">
+                    <input type="email"  name="email" id="email" class="nw-border-b !border-b-[.7px] dark:!border-b-[1px] w-full bg-transparent placeholder:text-base placeholder:uppercase placeholder:text-black dark:placeholder:text-white" placeholder="{{t 'Email address'}}">
+                </div>
+                <div class="mb-12">
+                    <textarea name="message" id="message" cols="30" rows="10" class="nw-border-b !border-b-[.7px] dark:!border-b-[1px] w-full bg-transparent placeholder:text-base placeholder:uppercase placeholder:text-black dark:placeholder:text-white" placeholder="{{t 'Message'}}"></textarea>
+                </div>
+
+                <div class="flex justify-center mt-[60px]">
+                    <button type="submit" class="flex space-x-2 items-center">
+                        <span class="uppercase font-semibold">{{t "Send message"}}</span>
+                        <span>
+                            {{> 'icons/arrow-up-right-small'}}
+                        </span>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+        <div class="hidden lg:block">
+            {{#if page.feature_image}}
+                <div class="relative mb-3">
+                    <div class="block relative w-full h-[400px] lg:h-[700px] rounded-tr-[200px]">
+                        <img class="nw-img lazyload  rounded-tr-[200px]" src="{{img_url page.feature_image size="xxs"}}" data-src="{{img_url page.feature_image size="xl"}}" alt="{{#if page.feature_image_alt}}{{page.feature_image_alt}}{{else}}{{page.title}}{{/if}}">
+                    </div>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+{{#if isSecondary}}
+    <ul class="flex justify-between space-x-12 text-sm uppercase">
+        {{#foreach navigation}}
+            <li>
+                <a href="{{url absolute="true"}}"  class="{{#if current}}{{/if}}">
+                    {{label}}
+                </a>
+            </li>
+        {{/foreach}}
+    </ul>
+{{else}}
+    <ul class="flex flex-col space-y-4 md:space-y-0 md:flex-row md:justify-center md:tems-center md:space-x-14 w-full">
+        {{#foreach navigation}}
+            <li>
+                <a href="{{url absolute="true"}}" class="uppercase hover:underline {{#if current}}underline{{/if}}">
+                    {{label}}
+                </a>
+            </li>
+        {{/foreach}}
+    </ul>
+{{/if}}

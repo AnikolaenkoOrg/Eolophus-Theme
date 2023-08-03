@@ -1,0 +1,33 @@
+<aside class="grid grid-cols-1 space-y-6 sm:space-y-0 sm:grid-cols-2 gap-x-2 mt-[60px]">
+    {{#prev_post}}
+        <div class="flex items-center space-x-2 group">
+            {{#if feature_image}}
+                <div class="relative w-[150px] h-[100px] rounded-[100px] shrink-0">
+                    <a href="{{url}}">
+                        <img class="nw-img lazyload rounded-[100px]" src="{{img_url feature_image size="xxs"}}" data-src="{{img_url feature_image size="m"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}">
+                    </a>
+                </div>
+            {{/if}}
+            <a href="{{url}}" class="flex flex-col">
+                <span class="font-bold text-lg group-hover:underline leading-6">{{title}}</span>
+                <span class="text-[#8c8a8a] mt-1">{{t "Older post"}}</span>
+            </a>
+        </div>
+    {{/prev_post}}
+
+    {{#next_post}}
+        <div class="flex items-center space-x-2 text-right justify-end group">
+            <a href="{{url}}" class="flex flex-col">
+                <span class="font-bold text-lg group-hover:underline leading-6">{{title}}</span>
+                <span class="text-[#8c8a8a] mt-1">{{t "Newer post"}}</span>
+            </a>
+            {{#if feature_image}}
+                <div class="relative w-[150px] h-[100px] rounded-[100px] shrink-0">
+                    <a href="{{url}}">
+                        <img class="nw-img lazyload rounded-[100px]" src="{{img_url feature_image size="xxs"}}" data-src="{{img_url feature_image size="m"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}">
+                    </a>
+                </div>
+            {{/if}}
+        </div>
+    {{/next_post}}
+</aside>

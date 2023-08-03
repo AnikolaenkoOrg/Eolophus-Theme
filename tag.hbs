@@ -1,0 +1,33 @@
+{{!< default}}
+
+
+<div class="nw-space-t container mx-auto">
+    
+    {{#tag}}
+        {{#if feature_image}}
+            <div class="max-w-[350px] h-[230px] relative rounded-[200px] mx-auto mb-4">
+                <img class="nw-img lazyload rounded-[200px]" src="{{img_url feature_image size="xxs"}}" data-src="{{img_url feature_image size="xl"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{name}}{{/if}}">
+            </div>
+        {{/if}}
+        <h1 class="text-center uppercase text-xl font-bold mb-2">{{name}}</h1>
+        {{#if description}}
+            <div class="text-center max-w-[500px] mx-auto mb-2">
+                {{description}}
+            </div>
+        {{/if}}
+        <div class="flex justify-center">
+            <span class="nw-tag dark:nw-tag-dark text-xs hover:bg-inherit dark:hover:bg-inherit hover:text-inherit dark:hover:text-inherit">
+                {{plural ../pagination.total empty="No posts" singular="% post" plural="% posts"}}
+            </span>
+        </div>
+    {{/tag}}
+    
+    <div class="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 xl:grid-cols-3 mt-[60px]" id="trex_blog">
+        {{#foreach posts}}
+            {{> "loop"}}
+        {{/foreach}}
+    </div>
+
+    {{pagination}}
+
+</div>

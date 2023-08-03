@@ -1,0 +1,25 @@
+{{!< default}}
+
+<div class="container mx-auto">
+    <div class="nw-space-t flex-col flex items-center">
+        <h1 class="text-9xl font-bold leading-none">
+            {{statusCode}}
+        </h1>
+
+        <div class="text-[#ababab] text-xl font-semibold">
+            {{message}}
+        </div>
+
+        <a href="{{@site.url}}" class="flex space-x-2 items-center infinite-scroll-button my-16">
+            <span class="uppercase font-semibold">{{t "Back to home"}}</span>
+            <span>
+                <svg class="stroke-black dark:stroke-white" width="10" height="11" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 16L15 1M15 1L15 14.125M15 1L2.75 1" stroke-width="1.875"></path>
+                </svg>
+            </span>
+        </a>
+
+        {{> "recommended-posts"}}
+
+    </div>
+</div>

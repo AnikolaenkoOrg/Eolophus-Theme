@@ -1,0 +1,137 @@
+<div class="nw-border-b h-[75px] flex">
+    <!-- Menu -->
+    <div class="nw-border-r hidden md:flex justify-center items-center px-6 space-x-3 text-xs underline uppercase">
+        {{#if @site.facebook}}
+            <a href="https://facebook.com/{{@site.facebook}}" target="_blank">
+                {{t "Facebook"}}
+            </a>
+        {{/if}}
+        {{#if @site.twitter}}
+            <a href="https://twitter.com/{{@site.twitter}}" target="_blank">
+                {{t "Twitter"}}
+            </a>
+        {{/if}}
+    </div>
+    <!-- /Menu -->
+
+    <div class="hidden lg:flex justify-center items-center px-7 h-full"></div>
+    
+    {{#unless member}}
+        <div class="nw-border hidden lg:flex justify-center items-center px-14"></div>
+    {{/unless}}
+
+    <!-- Logo -->
+    <div class="flex-1 flex justify-center items-center nw-border-r">
+        <div class="dark:hidden">
+            {{#if @site.logo}}
+                <a href="{{@site.url}}">
+                    <img src="{{@site.logo}}" alt="{{@site.title}}" class="max-w-[120px] md:max-w-[140px]">
+                </a>
+            {{else}}
+                <a href="{{@site.url}}" class="text-4xl font-semibold tracking-tighter">
+                    {{@site.title}}
+                </a>
+            {{/if}}
+        </div>
+        <div class="hidden dark:block">
+            {{#if @custom.logo_dark}}
+                <a href="{{@site.url}}">
+                    <img src="{{@custom.logo_dark}}" alt="{{@custom.logo_dark}}" class="max-w-[120px] md:max-w-[140px]">
+                </a>
+            {{else}}
+                <a href="{{@site.url}}" class="text-4xl font-semibold tracking-tighter">
+                    {{@site.title}}
+                </a>
+            {{/if}}
+        </div>
+    </div>
+    <!-- /Logo -->
+
+    <!-- Search -->
+    <div class="nw-border-r hidden md:flex justify-center items-center">
+        <button data-ghost-search class="block px-8 h-full">
+            {{> "icons/search"}}
+        </button>
+    </div>
+    <!-- Search -->
+
+    <!-- Login -->
+    {{#unless member}}
+        <div class="nw-border-r hidden md:flex justify-center items-center">
+            <button class="px-4 h-full flex justify-center items-center space-x-2" data-portal="signin">
+                <span class="uppercase text-xs">{{t "log in"}}</span>
+                <span>{{> "icons/user"}}</span>
+            </button>
+        </div>
+    {{else}}
+        <div class="nw-border-r hidden md:flex justify-center items-center">
+            <div class="px-4 h-full flex justify-center items-center space-x-2">
+                <span class="uppercase text-xs hover:cursor-pointer" data-portal="account">{{t "Profile"}}</span>
+                <span>/</span>
+                <span class="uppercase text-xs hover:cursor-pointer" data-members-signout>{{t "Logout"}}</span>
+            </div>
+        </div>
+    {{/unless}}
+    <!-- Login -->
+
+    <!-- Subscribe -->
+    {{#unless member}}
+    <div class="hidden md:flex justify-center items-center dark bg-black">
+        <button class="px-8 h-full flex justify-center items-center space-x-2" data-portal="subscribe">
+            <span class="uppercase text-xs text-white">{{t "subscribe"}}</span>
+            <span>{{> "icons/arrow-up-right-small"}}</span>
+        </button>
+    </div>
+    {{/unless}}
+    <!-- Subscribe -->
+
+    <!-- Menu -->
+    <div class="flex justify-center items-center md:hidden">
+        <input type="checkbox" id="drawer-toggle" class="relative hidden peer sr-only" autocomplete="off">
+        <label class="block px-12 peer-checked:hidden" for="drawer-toggle">
+            {{> "icons/menu"}}
+        </label>
+        <label class="hidden px-12 peer-checked:block" for="drawer-toggle">
+            {{> "icons/close"}}
+        </label>
+        <div class="{{#match @custom.color_scheme "=" "Sepia"}} nw-sepia {{/match}} {{#match @custom.color_scheme "=" "Light"}} bg-white {{/match}} dark:bg-black fixed top-0 -left-10 z-20 w-64 h-full transition-all duration-500 transform -translate-x-full shadow-2xl peer-checked:translate-x-0 peer-checked:left-0">
+            <div class="px-6 py-4">
+                <h2 class="text-lg font-semibold uppercase">{{t "Menu"}}</h2>
+                <div class="mt-12">
+                    {{navigation}}
+                </div>
+                <div class="flex flex-col space-y-4 mt-4">
+                    {{#unless member}}
+                        <a href="#" class="uppercase" data-portal="signin">{{t "log in"}}</a>
+                    {{else}}
+                        <a href="#" class="uppercase" data-portal="account">{{t "Profile"}}</a>
+                        <a href="#" class="uppercase" data-members-signout>{{t "Logout"}}</a>
+                    {{/unless}}
+
+                    {{#unless member}}
+                        <a href="#" class="uppercase" data-portal="subscribe">{{t "subscribe"}}</a>
+                    {{/unless}}
+                </div>
+
+                <div class="mt-16 text-xs underline uppercase flex space-x-3">
+                    {{#if @site.facebook}}
+                        <a href="https://facebook.com/{{@site.facebook}}" target="_blank">
+                            {{t "Facebook"}}
+                        </a>
+                    {{/if}}
+                    {{#if @site.twitter}}
+                        <a href="https://twitter.com/{{@site.twitter}}" target="_blank">
+                            {{t "Twitter"}}
+                        </a>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Menu -->
+
+</div>
+
+<div class="h-[65px] md:flex justify-center items-center nw-border-b text-sm overflow-x-auto hidden" id="nw-navigation">
+    {{navigation}}
+</div>

@@ -1,0 +1,57 @@
+<footer class="container mx-auto nw-space-double-t">
+    <div class="nw-border-t gap-y-6 w-full flex justify-center lg:block">
+        <div class="grid place-items-center gap-y-6 lg:flex justify-between items-center py-8 lg:py-4">
+            <div>
+                <div class="dark:hidden">
+                    {{#if @site.logo}}
+                        <a href="{{@site.url}}">
+                            <img src="{{@site.logo}}" alt="{{@site.title}}" class="max-w-[130px] block">
+                        </a>
+                    {{else}}
+                        <a href="{{@site.url}}" class="text-4xl font-semibold tracking-tighter">
+                            {{@site.title}}
+                        </a>
+                    {{/if}}
+                </div>
+                <div class="hidden dark:block">
+                    {{#if @custom.logo_dark}}
+                        <a href="{{@site.url}}">
+                            <img src="{{@custom.logo_dark}}" alt="{{@custom.logo_dark}}" class="max-w-[130px] block">
+                        </a>
+                    {{else}}
+                        <a href="{{@site.url}}" class="text-4xl font-semibold tracking-tighter">
+                            {{@site.title}}
+                        </a>
+                    {{/if}}
+                </div>
+                <div class="text-[10px] uppercase mt-2">{{t "Published with ghost"}}</div>
+            </div>
+            <div>
+                {{#if @site.secondary_navigation}}
+                    {{navigation type="secondary"}}
+                {{/if}}
+            </div>
+            <div>
+                <button class="flex space-x-2 items-center" id="nw-back-top">
+                    <span class="uppercase text-xs font-medium">{{t "back to top"}}</span>
+                    <span>
+                        {{> "icons/arrow-up-right-small"}}
+                    </span>
+                </button>
+                <div class="hidden border border-black dark:border-white text-xs uppercase mt-2 {{#match @custom.color_scheme "=" "Auto Sepia Dark"}} !flex {{/match}} {{#match @custom.color_scheme "=" "Auto Light Dark"}} !flex {{/match}}">
+                    <input type="checkbox" class="hidden peer" name="sr-only" id="switch_dark">
+                    <label id="{{#match @custom.color_scheme "=" "Auto Sepia Dark"}}trex_sepia{{else}}trex_light{{/match}}" for="switch_dark" class="py-1 flex-1 text-center hover:cursor-pointer bg-black text-white dark:bg-white dark:text-black peer-checked:bg-transparent peer-checked:text-black dark:peer-checked:bg-transparent dark:peer-checked:text-white">
+                        {{#match @custom.color_scheme "=" "Auto Sepia Dark"}}
+                            <span>{{t "Sepia"}}</span>
+                        {{else}}
+                            <span>{{t "Light"}}</span>
+                        {{/match}}
+                    </label>
+                    <label id="trex_dark" for="switch_dark" class="py-1 flex-1 text-center hover:cursor-pointer peer-checked:bg-black peer-checked:text-white dark:peer-checked:bg-white dark:peer-checked:text-black">
+                        <span>{{t "Dark"}}</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

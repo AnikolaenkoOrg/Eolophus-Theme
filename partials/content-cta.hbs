@@ -1,0 +1,42 @@
+{{{html}}}
+
+<div class="flex flex-col items-center space-y-4 border border-black dark:border-[#222] py-12 px-16 relative text-center" id="trex-cta">
+    {{#has visibility="paid"}}
+        <div class="font-bold text-2xl md:text-4xl ">
+            {{t "This post is for paying subscribers only"}}
+        </div>
+        <div class="text-base text-[#222] dark:text-gray-300 font-medium">
+            {{t "Sign up now to read the post and get access to the full library of posts for subscribers only."}}
+        </div>
+    {{/has}}
+
+    {{#has visibility="members"}}
+        <div class="font-bold text-2xl md:text-4xl">
+            {{t "This post is for subscribers only"}}
+        </div>
+        <div class="text-base text-[#222] dark:text-gray-300 font-medium">
+            {{t "Sign up now and upgrade your account to read the post and get access to the full library of posts for paying subscribers only."}}
+        </div>
+    {{/has}}
+
+    {{#has visibility="tiers"}}
+        <div class="font-bold text-2xl md:text-4xl ">
+            {{t "This post is for subscribers on the" }} {{tiers}} {{t "only"}}
+        </div>
+        <div class="text-base text-[#222] dark:text-gray-300  font-medium">
+            {{t "Sign up now and upgrade your account to read the post and get access to the full library of posts for subscribers on the"}} {{tiers}} {{t "only"}}
+        </div>
+    {{/has}}
+    {{#if @member}}
+        <button data-portal="account/plans" class="px-8 py-4 h-full flex justify-center items-center space-x-2 bg-black dark:text-black text-white dark:bg-white text-sm uppercase font-bold">
+            {{t "Upgrade now"}}
+        </button>
+    {{else}}
+        <button data-portal="signup" class="px-8 py-4 h-full flex justify-center items-center space-x-2 bg-black dark:bg-white dark:text-black text-white text-sm uppercase font-bold">
+            {{t "Subscribe now"}}
+        </button>
+        <div class="text-sm font-semibold">
+            {{t "Already have an account?"}} <a href="#" data-portal="signin" class="main-color">{{t "Sign in"}}</a>
+        </div>
+    {{/if}}
+</div>

@@ -1,0 +1,45 @@
+{{!< default}}
+
+<div class="container mx-auto">
+    {{#post}}
+    <div class="nw-space-t">
+        {{#if title}}
+            <h1 class="text-center text-6xl font-bold md:px-32">{{title}}</h1>
+            {{> "divider"}}
+        {{/if}}
+    </div>
+    {{/post}}
+
+    <div class="grid grid-cols-1 gap-x-6 gap-y-24 lg:gap-y-32 sm:grid-cols-2 xl:grid-cols-3 mt-[100px]">
+        {{#get "tags" limit="all" include="count.posts"}}
+            {{#foreach tags}}
+                <div class="pb-4 border-b border-black dark:border-[#222]">
+                    <div class="flex items-center space-x-4">
+                        {{#if feature_image}}
+                            <div class="relative w-[150px] h-[100px] rounded-[100px] shrink-0">
+                                <a href="{{url}}">
+                                    <img class="nw-img lazyload rounded-[100px]" src="{{img_url feature_image size="xxs"}}" data-src="{{img_url feature_image size="m"}}" alt="{{name}}">
+                                </a>
+                            </div>
+                        {{else}}
+                            <div class="trex_has_text relative w-[150px] h-[100px] rounded-[100px] shrink-0 border border-black dark:border-[#222] flex justify-center items-center text-2xl font-bold uppercase">
+                                {{name}}
+                            </div>
+                        {{/if}}
+                        <a href="{{url}}" class="flex flex-col space-y-2">
+                            <span class="font-bold text-lg uppercase">{{name}}</span>
+                            <span class="nw-tag dark:nw-tag-dark text-xs hover:bg-inherit dark:hover:bg-inherit hover:text-inherit dark:hover:text-inherit">
+                                {{plural count.posts empty="No posts" singular="% post" plural="% posts"}}
+                            </span>
+                        </a>
+                    </div>
+                    {{#if description}}
+                        <div class="line-clamp-2 mt-4">
+                            {{description}}
+                        </div>
+                    {{/if}}
+                </div>
+            {{/foreach}}
+        {{/get}}
+    </div>
+</div>

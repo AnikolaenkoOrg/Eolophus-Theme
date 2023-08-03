@@ -1,0 +1,63 @@
+{{#get "posts" filter="primary_tag:{{primary_tag.slug}}+id:-{{id}}" include="tags,authors" limit="2"}}
+{{#match posts.length ">" 0}}
+    <section class="nw-space-t">
+        <h4 class="flex items-center space-x-2 mb-6">
+            <span>
+                {{> "icons/union"}}
+            </span>
+            <span class="uppercase text-lg font-semibold">
+                {{t "Related Posts"}}
+            </span>
+        </h4>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 xl:gap-y-0 xl:grid-cols-2 gap-x-6">
+            {{#foreach posts}}
+                <article>
+                    {{#if feature_image}}
+                        <div class="h-[300px] max-w-full relative mb-4">
+                            <a href="{{url}}">
+                                <img class="nw-img lazyload" src="{{img_url feature_image size="xxs"}}" data-src="{{img_url feature_image size="xl"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}">
+                            </a>
+                        </div>
+                    {{/if}}
+                    <div class="flex space-x-2 mb-2">
+                        {{#if tags}}
+                            <div class="flex space-x-2">
+                                {{#foreach tags}}
+                                    <a href="{{url}}" title="{{name}}" class="nw-tag dark:nw-tag-dark text-xs">
+                                        <span>{{name}}</span>
+                                    </a>
+                                {{/foreach}}
+                            </div>
+                        {{/if}}
+                        {{#unless access}}
+                            <span class="nw-tag dark:nw-tag-dark text-xs hover:bg-inherit dark:hover:bg-inherit">
+                                {{> "icons/locked"}}
+                            </span>
+                        {{/unless}}
+                        {{#if featured}}
+                            <span class="nw-tag dark:nw-tag-dark text-xs hover:bg-inherit dark:hover:bg-inherit">
+                                {{> "icons/featured"}}
+                            </span>
+                        {{/if}}
+                    </div>
+                    {{#if title}}
+                        <h3 class="text-xl leading-8 font-bold uppercase line-clamp-2 mb-2">
+                            <a href="{{url}}" class="hover:underline">
+                                {{title}}
+                            </a>
+                        </h3>
+                    {{/if}}
+                    <div class="uppercase text-sm">
+                        {{#primary_author}}
+                            <span>{{t "by"}} <a href="{{url}}" title="{{name}}">{{name}}</a></span>
+                        {{/primary_author}}
+                        <span>/</span>
+                        <span><time datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time></span>
+                    </div>
+                </article>
+            {{/foreach}}
+        </div>
+    </section>
+{{/match}}
+{{/get}}

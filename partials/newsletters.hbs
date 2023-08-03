@@ -1,0 +1,28 @@
+<div class="nw-space-double-t nw-space-double-b">
+    <div class="splide" id="nw-subscribe">
+        <div class="splide__track">
+            <div class="splide__list flex items-center">
+                <div class="text-3xl md:text-6xl font-bold uppercase splide__slide">
+                    {{t 'SIGN UP TO THE NEWSLETTER'}}
+                </div>
+                <div class="splide__slide">
+                    {{> 'icons/star'}}
+                </div>
+                <div class="text-3xl md:text-6xl font-bold uppercase splide__slide">
+                    {{t 'SIGN UP TO THE NEWSLETTER'}}
+                </div>
+                <div class="splide__slide">
+                    {{> 'icons/star'}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="max-w-[520px] mt-[50px] relative mx-10 sm:mx-auto">
+        <div class="absolute top-0 right-0">
+            {{> 'icons/arrow-up-right'}}
+        </div>
+        <div  data-portal="subscribe">
+            <input type="email" readonly="readonly" name="email" class="nw-border-b !border-b-[.7px] dark:!border-b-[1px] w-full bg-transparent placeholder:text-base placeholder:uppercase placeholder:text-black dark:placeholder:text-white" placeholder="{{t "Email address"}}">
+        </div>
+    </div>
+</div>

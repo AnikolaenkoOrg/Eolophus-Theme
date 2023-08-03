@@ -1,0 +1,45 @@
+{{!< default}}
+
+
+<div class="nw-space-t container mx-auto">
+    
+    {{#author}}
+        {{#if profile_image}}
+            <div class="max-w-[350px] h-[230px] relative rounded-[200px] mx-auto mb-4">
+                <img class="nw-img lazyload rounded-[200px]" src="{{img_url profile_image size="xxs"}}" data-src="{{img_url profile_image size="xl"}}" alt="{{name}}">
+            </div>
+        {{/if}}
+        <h1 class="text-center uppercase text-xl font-bold mb-2">{{name}}</h1>
+        {{#if bio}}
+            <div class="text-center max-w-[500px] mx-auto mb-2">
+                {{bio}}
+            </div>
+        {{/if}}
+        <div class="flex justify-center items-center space-x-3">
+            <div class="flex space-x-3 text-xs underline uppercase">
+                {{#if facebook}}
+                    <a href="https://facebook.com/{{facebook}}" target="_blank">
+                        {{t "Facebook"}}
+                    </a>
+                {{/if}}
+                {{#if twitter}}
+                    <a href="https://twitter.com/{{twitter}}" target="_blank">
+                        {{t "Twitter"}}
+                    </a>
+                {{/if}}
+            </div>
+            <span class="nw-tag dark:nw-tag-dark text-xs hover:bg-inherit dark:hover:bg-inherit hover:text-inherit dark:hover:text-inherit">
+                {{plural ../pagination.total empty="No posts" singular="% post" plural="% posts"}}
+            </span>
+        </div>
+    {{/author}}
+    
+    <div class="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 xl:grid-cols-3 mt-[60px]" id="trex_blog">
+        {{#foreach posts}}
+            {{> "loop"}}
+        {{/foreach}}
+    </div>
+
+    {{pagination}}
+
+</div>

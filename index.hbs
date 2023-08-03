@@ -1,0 +1,21 @@
+{{!< default}}
+
+<div class="nw-space-t container mx-auto">
+    <h1 class="flex items-center space-x-2 mb-12">
+        <span>
+            {{> "icons/union"}}
+        </span>
+        <span class="uppercase text-lg font-semibold">
+            {{page.title}}
+        </span>
+    </h1>
+    
+    <div class="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 xl:grid-cols-3" id="trex_blog">
+        {{#foreach posts}}
+            {{> "loop"}}
+        {{/foreach}}
+    </div>
+
+    {{pagination}}
+
+</div>

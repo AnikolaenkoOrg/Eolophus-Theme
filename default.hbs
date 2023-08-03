@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}" dir="ltr" class="{{#match @custom.color_scheme "=" "Dark"}} dark {{/match}}" {{#match @custom.color_scheme "=" "Auto Light Dark"}}id="trex_switcher"{{/match}}{{#match @custom.color_scheme "=" "Auto Sepia Dark"}}id="trex_switcher"{{/match}}>
+<head>
+    <title>{{meta_title}}</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="{{asset "built/screen.css"}}">
+    <style>
+        :root {
+            --main-color: var(--ghost-accent-color);
+        }
+    </style>
+    {{ghost_head}}
+</head>
+
+<body class="{{body_class}} {{{block "body_class"}}} back-to-top {{#match @custom.color_scheme "=" "Sepia"}} nw-sepia {{/match}} {{#match @custom.color_scheme "=" "Auto Sepia Dark"}} nw-sepia {{/match}} dark:bg-black dark:text-white" id="trex_body">
+
+    {{> "header"}}
+
+    {{{body}}}
+
+    {{> "footer"}}
+
+    <script src="{{asset "built/build.min.js"}}"></script>
+    {{ghost_foot}}
+{{> integrations/contextly}}
+{{> integrations/outpost}}
+</body>
+</html>

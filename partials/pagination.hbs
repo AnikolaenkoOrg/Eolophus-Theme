@@ -1,0 +1,24 @@
+<nav class="pagination">
+    {{#if next}}
+        <a class="older-posts" href="{{page_url next}}"></a>
+    {{/if}}
+</nav>
+
+<div class="infinite-scroll-status">
+    <div class="infinite-scroll-request"></div>
+</div>
+
+<!-- Load -->
+<div class="infinite-scroll-action flex justify-center mt-[120px]">
+    <button class="flex space-x-2 items-center infinite-scroll-button">
+        <span class="uppercase font-semibold">{{t "Load more"}}</span>
+        <span>
+            {{> "icons/arrow-up-right-small"}}
+        </span>
+    </button>
+</div>
+
+<!-- End Load -->
+
+
+{{#contentFor "body_class"}}{{#if next}} paged-next{{/if}}{{/contentFor}}

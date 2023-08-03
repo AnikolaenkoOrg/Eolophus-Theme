@@ -1,0 +1,33 @@
+{{!< default}}
+
+<div class="container mx-auto">
+{{#post}}
+    <div class="nw-space-t">
+        {{#if title}}
+            <h1 class="text-center text-6xl font-bold md:px-32">{{title}}</h1>
+            {{> "divider"}}
+        {{/if}}
+    </div>
+    {{#if feature_image}}
+        <figure>
+            <img class="nw-space-t lazyload max-w-full w-full" src="{{img_url feature_image size="xxs"}}" data-src="{{img_url feature_image size="xl"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}">
+            {{#if feature_image_caption}}
+                <figcaption class="text-base mt-2">{{feature_image_caption}}</figcaption>
+            {{/if}}
+        </figure>
+    {{/if}}
+
+    <div class="grid grid-cols-12 nw-space-t items-center">
+        <div class="col-span-12 lg:col-span-8 xl:col-start-3 xl:col-span-8">
+            {{#if excerpt}}
+                <div class="text-lg text-gray-900 dark:text-gray-300 font-medium pb-8 mb-8 mt-8 lg:mt-0 nw-border-b !border-b-[.7px] dark:!border-b-[1px]">
+                    <p>{{excerpt}}</p>
+                </div>
+            {{/if}}
+            <div class="nw-content">
+                {{content}}
+            </div>
+        </div>
+    </div>
+{{/post}}
+</div>
